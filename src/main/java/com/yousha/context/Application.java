@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
@@ -18,9 +17,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @ComponentScan(basePackageClasses = ApplicationLauncher.class)
 @PropertySource("classpath:/application.properties")
-@PropertySource("classpath:/mongo.yml") //for mongo db
 @EnableWebMvc
-@EnableMongoRepositories(basePackageClasses=ApplicationLauncher.class) //for mongo
 public class Application {
 //    public static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 //    public static final TransactionService transactionService = new TransactionService();
