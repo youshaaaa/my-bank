@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bank Statement</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+<p>
+    <span th:text="Transactions for account number ${accountnumber}"></span>
+</p>
 
+<div th:if="${ not#lists.isEmpty(transactions)}">
+    <table>
+        <tr>
+            <th>Vendor</th>
+            <th>Product Name</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.vendor}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+        </tr>
+        <table>
+</div>
 </body>
 </html>
