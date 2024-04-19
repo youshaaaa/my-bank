@@ -1,10 +1,7 @@
 package com.yousha.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
@@ -14,14 +11,17 @@ public class Transaction {
 
     private String id;
     private Double amount;
+
+    private String userId;
     private String reference;
     private String bankSlogan;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mmZ")
     private ZonedDateTime time;
 
-    public Transaction(Double amount, String reference, ZonedDateTime time, String bankSlogan) {
+    public Transaction(Double amount, String reference, ZonedDateTime time, String bankSlogan, String userId) {
         this.id = UUID.randomUUID().toString();
         this.amount = amount;
+        this.userId = userId;
         this.reference = reference;
         this.time = time;
         this.bankSlogan = bankSlogan;
@@ -41,6 +41,14 @@ public class Transaction {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getReference() {

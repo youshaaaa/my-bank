@@ -14,11 +14,18 @@ public class TransactionDto {
     @NotNull(message = "Please enter amount")
     private Double amount;
 
+    @NotNull @NotBlank
+    private String userId;
+
     public String getReference() {
         return reference;
     }
 
     public Double getAmount() {
         return amount;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

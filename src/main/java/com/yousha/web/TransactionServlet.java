@@ -54,7 +54,8 @@ public class TransactionServlet extends HttpServlet {
         if(request.getRequestURI().equalsIgnoreCase("/transactions")){
             Double amount = Double.parseDouble(request.getParameter("amount"));
             String reference = request.getParameter("reference");
-            Transaction transaction = transactionService.create(amount,reference);
+            String userId = request.getParameter("userId");
+            Transaction transaction = transactionService.create(amount,reference,userId);
             String json = objectMapper.writeValueAsString(transaction);
             response.getWriter().print(json);
         } else {

@@ -24,6 +24,6 @@ public class TransactionController {
 
     @PostMapping("/transactions")
     public Transaction createTransaction(@RequestBody @Valid TransactionDto transactionDto){
-        return transactionService.create(transactionDto.getAmount(), transactionDto.getReference());
+        return transactionService.create(transactionDto.getAmount(), transactionDto.getReference(), transactionDto.getUserId());
     }
 }

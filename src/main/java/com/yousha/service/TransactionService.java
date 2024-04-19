@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
 
 @Component
 public class TransactionService {
@@ -25,17 +24,13 @@ public class TransactionService {
     }
 
     //can be done through spring data JPA rather than stream
-//    public Transaction findById(String id){
-//        List<Transaction> ts = transactions.stream().filter(transaction -> transaction.getId().equals(id)).collect(Collectors.toList());
-//        if(!ts.isEmpty()){
-//            return ts.get(0);
-//        }
-//        return null;
-//    }
+    public List<Transaction> findTransactionsByUser(String userId){
+        return transactions.stream().filter(x -> x.getUserId().equals(userId)).toList();
+    }
 
-    public Transaction create(Double amount, String reference){
+    public Transaction create(Double amount, String reference, String userId){
         ZonedDateTime time = ZonedDateTime.now();
-        Transaction transaction = new Transaction(amount,reference, time, bankSlogan);
+        Transaction transaction = new Transaction(amount,reference, time, bankSlogan, userId);
         transactions.add(transaction);
         return transaction;
     }
